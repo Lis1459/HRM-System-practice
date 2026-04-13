@@ -7,14 +7,21 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "typecheck": "npx nuxt typecheck"
   },
   "dependencies": {
+    "@apollo/client": "^4.1.7",
     "@nuxt/eslint": "^1.15.2",
-    "@nuxtjs/apollo": "^4.0.1-rc.5",
     "@pinia/nuxt": "^0.11.3",
+    "cv-graphql": "^2.13.2",
+    "graphql": "^16.13.2",
     "nuxt": "^4.4.2",
     "vue": "^3.5.32",
     "vue-router": "^5.0.4"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.2",
+    "vue-tsc": "^3.2.6"
   }
 }
