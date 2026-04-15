@@ -1,11 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import Aura from "@primeuix/themes/aura";
+import Lara from "@primeuix/themes/lara";
 
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
   modules: ["@nuxt/eslint", "@pinia/nuxt", "@primevue/nuxt-module"],
   css: ["primeicons/primeicons.css"],
+  routeRules: {
+    "/auth/**": { appLayout: "auth" },
+  },
 
   typescript: {
     typeCheck: true,
@@ -27,7 +30,7 @@ export default defineNuxtConfig({
   primevue: {
     options: {
       theme: {
-        preset: Aura,
+        preset: Lara,
       },
     },
   },
