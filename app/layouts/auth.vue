@@ -1,23 +1,36 @@
 <script setup lang="ts">
 const route = useRoute();
-console.log(route.fullPath);
+const router = useRouter();
 
 const activeTab = computed(() => route.path);
+const items = [
+  { route: "/auth/login", label: "LOG IN" },
+  { route: "/auth/signup", label: "SIGN UP" },
+];
 </script>
 
 <template>
   <div class="auth">
-    <Tabs :value="activeTab">
+    <Tabs :value="activeTab" class="tabs" scrollable>
       <TabList>
-        <Tab value="/auth/login">
-          <NuxtLink to="./login">LOG IN</NuxtLink>
-        </Tab>
-        <Tab value="/auth/signup">
-          <NuxtLink to="./signup">SIGN UP</NuxtLink>
+        <Tab
+          v-for="tab in items"
+          :key="tab.label"
+          :value="tab.route"
+          @click.prevent="() => router.push(`${tab.route}`)"
+        >
+          {{ tab.label }}
         </Tab>
       </TabList>
     </Tabs>
-
     <slot />
   </div>
 </template>
+
+<style scoped>
+.auth {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+</style>

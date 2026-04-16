@@ -1,11 +1,16 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import Lara from "@primeuix/themes/lara";
 
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   modules: ["@nuxt/eslint", "@pinia/nuxt", "@primevue/nuxt-module"],
-  css: ["primeicons/primeicons.css"],
+  css: [
+    "primeicons/primeicons.css",
+    "@fontsource/roboto/500.css",
+    "@fontsource/roboto/600.css",
+    "@fontsource/roboto/700.css",
+    "@/assets/styles/prime-overrides.css",
+  ],
   routeRules: {
     "/auth/**": { appLayout: "auth" },
   },
@@ -26,12 +31,16 @@ export default defineNuxtConfig({
         "@apollo/client/core",
       ],
     },
-  },
-  primevue: {
-    options: {
-      theme: {
-        preset: Lara,
+    build: {
+      sourcemap: false,
+    },
+    server: {
+      hmr: {
+        overlay: false,
       },
     },
+  },
+  primevue: {
+    importTheme: { from: "~/theme/mytheme.ts" },
   },
 });

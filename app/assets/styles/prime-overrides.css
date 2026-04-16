@@ -1,0 +1,30 @@
+:root {
+  --p-tabs-active-bar-background: var(--p-tabs-tab-active-color);
+  --p-tabs-active-bar-height: 2px;
+}
+
+html {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+
+body {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.p-tab-active {
+  font-weight: 600;
+}
+
+.p-tablist-nav-button:hover {
+  color: transparent;
+}
