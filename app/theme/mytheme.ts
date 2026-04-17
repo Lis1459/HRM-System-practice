@@ -6,8 +6,8 @@ const MyPreset = definePreset(Lara, {
     colorScheme: {
       light: {
         surface: {
-          50: "transparent",
-          100: "transparent",
+          50: "white",
+          100: "white",
           200: "#000000",
           300: "#000000",
           400: "#000000",
@@ -36,12 +36,9 @@ const MyPreset = definePreset(Lara, {
   components: {
     tabs: {
       tab: {
-        borderWidth: "0 0 0 0",
+        borderWidth: "0",
         fontWeight: "500",
         padding: "16px 50px",
-      },
-      navButton: {
-        color: "transparent",
       },
     },
   },

@@ -11,7 +11,7 @@ const items = [
 
 <template>
   <div class="auth">
-    <Tabs :value="activeTab" class="tabs" scrollable>
+    <Tabs :value="activeTab" class="tabs">
       <TabList>
         <Tab
           v-for="tab in items"
