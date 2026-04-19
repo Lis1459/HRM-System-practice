@@ -1,14 +1,25 @@
+@import "@fontsource/roboto/400.css";
+@import "@fontsource/roboto/500.css";
+@import "@fontsource/roboto/700.css";
+@import "primeicons/primeicons.css";
+
 :root {
   --p-tabs-active-bar-background: var(--p-tabs-tab-active-color);
   --p-tabs-active-bar-height: 2px;
+
+  --p-form-field-hover-border-color: var(--p-primary-950);
 }
 
 html {
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-size: 14px;
+  font-weight: 400;
+
+  color: var(--p-surface-500);
 }
 
 body {
+  margin: 0px;
   font-family: inherit;
   font-size: inherit;
 }
@@ -19,6 +30,12 @@ textarea,
 select {
   font-family: inherit;
   font-size: inherit;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+input {
+  line-height: 23px;
 }
 
 .p-tab-active {
@@ -27,4 +44,18 @@ select {
 
 .p-tablist-nav-button {
   display: none;
+}
+
+button:focus-visible {
+  filter: brightness(0.9);
+}
+
+button,
+input,
+textarea,
+select,
+a,
+:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
 }

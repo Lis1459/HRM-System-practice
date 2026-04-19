@@ -32,5 +32,7 @@ const items = [
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
+  padding: 0px 10px;
 }
 </style>

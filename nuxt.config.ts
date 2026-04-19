@@ -3,20 +3,15 @@
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: false },
-  modules: ["@nuxt/eslint", "@pinia/nuxt", "@primevue/nuxt-module"],
-  css: [
-    "primeicons/primeicons.css",
-    "@fontsource/roboto/500.css",
-    "@fontsource/roboto/600.css",
-    "@fontsource/roboto/700.css",
-    "@/assets/styles/prime-overrides.css",
-  ],
+  modules: ["@nuxt/eslint", "@primevue/nuxt-module"],
+  css: ["@/assets/styles/prime-overrides.css"],
   routeRules: {
     "/auth/**": { appLayout: "auth" },
   },
 
   typescript: {
-    typeCheck: true,
+    // Keep Nuxt dev server responsive; run `npm run typecheck` manually when needed.
+    typeCheck: false,
   },
   runtimeConfig: {
     public: {
@@ -25,11 +20,7 @@ export default defineNuxtConfig({
   },
   vite: {
     optimizeDeps: {
-      include: [
-        "@vue/devtools-core",
-        "@vue/devtools-kit",
-        "@apollo/client/core",
-      ],
+      include: ["@apollo/client/core"],
     },
     build: {
       sourcemap: false,
@@ -41,6 +32,20 @@ export default defineNuxtConfig({
     },
   },
   primevue: {
+    components: {
+      include: [
+        "Button",
+        "FloatLabel",
+        "InputText",
+        "Password",
+        "Tab",
+        "TabList",
+        "Tabs",
+      ],
+    },
+    directives: {
+      include: ["Ripple"],
+    },
     importTheme: { from: "~/theme/mytheme.ts" },
   },
 });
