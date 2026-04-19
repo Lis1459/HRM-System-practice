@@ -1,8 +1,4 @@
 <script setup lang="ts">
-// defineOptions({
-//   inheritAttrs: false,
-// });
-
 withDefaults(
   defineProps<{
     label: string;
@@ -13,8 +9,6 @@ withDefaults(
     variant: "on",
   },
 );
-
-// const attrs = useAttrs();
 </script>
 
 <template>

@@ -87,7 +87,6 @@ const MyPreset = definePreset(Lara, {
       root: {
         badgeSize: "16px",
         borderRadius: "40px",
-        // paddingX: "16px",
         label: {
           fontWeight: "500",
         },
