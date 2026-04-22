@@ -3,14 +3,20 @@
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: false },
-  modules: ["@nuxt/eslint", "@primevue/nuxt-module"],
+  modules: ["@nuxt/eslint", "@pinia/nuxt", "@primevue/nuxt-module"],
   css: ["@/assets/styles/prime-overrides.css"],
   routeRules: {
     "/auth/**": { appLayout: "auth" },
   },
 
+  pinia: {
+    /**
+     * @default `['stores']`
+     */
+    storesDirs: [],
+  },
+
   typescript: {
-    // Keep Nuxt dev server responsive; run `npm run typecheck` manually when needed.
     typeCheck: false,
   },
   runtimeConfig: {
@@ -37,11 +43,15 @@ export default defineNuxtConfig({
         "Button",
         "FloatLabel",
         "InputText",
+        "Message",
         "Password",
         "Tab",
         "TabList",
         "Tabs",
       ],
+    },
+    options: {
+      ripple: true,
     },
     directives: {
       include: ["Ripple"],

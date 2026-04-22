@@ -6,12 +6,13 @@ const MyPreset = definePreset(Lara, {
     colorScheme: {
       light: {
         surface: {
-          50: "white",
-          100: "white",
+          0: "#F5F5F7", // bg у табов
+          50: "#F5F5F7", // bg у табов
+          100: "#F5F5F7", // bg у табов
           // 200: "#000000",
-          // 300: "#000000",
+          300: "#A7A7A7", // рамка у инпута
           // 400: "#000000",
-          500: "#2E2E2E",
+          500: "#2E2E2E", //
           // 600: "#000000",
           700: "#2E2E2E",
           // 800: "#000000",
@@ -20,8 +21,8 @@ const MyPreset = definePreset(Lara, {
         },
         primary: {
           200: "#000000",
-          500: "#C63031",
-          600: "#8A2122",
+          500: "#C63031", // цвет кнопки
+          600: "#8A2122", // hover цвет кнопки
           // 700: "#C63031",
         },
         text: {
@@ -96,6 +97,9 @@ const MyPreset = definePreset(Lara, {
       on: {
         borderRadius: "20px",
       },
+      root: {
+        fontWeight: "400",
+      },
     },
     password: {
       meter: {
@@ -103,6 +107,12 @@ const MyPreset = definePreset(Lara, {
       },
       overlay: {
         borderRadius: "0px",
+      },
+    },
+    message: {
+      text: {
+        fontSize: "12px",
+        fontWeight: "400",
       },
     },
   },

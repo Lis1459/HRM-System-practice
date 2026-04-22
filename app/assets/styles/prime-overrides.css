@@ -8,11 +8,13 @@
   --p-tabs-active-bar-height: 2px;
 
   --p-form-field-hover-border-color: var(--p-primary-950);
+
+  --p-form-field-float-label-color: var(--p-surface-300);
 }
 
 html {
   font-family: "Roboto", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
 
   color: var(--p-surface-500);
@@ -22,6 +24,7 @@ body {
   margin: 0px;
   font-family: inherit;
   font-size: inherit;
+  background-color: #f5f5f7;
 }
 
 button,
@@ -29,12 +32,12 @@ input,
 textarea,
 select {
   font-family: inherit;
-  font-size: inherit;
   font-size: 14px;
   font-weight: 400;
 }
 
 input {
+  font-size: 16px;
   line-height: 23px;
 }
 
@@ -58,4 +61,12 @@ a,
 :focus-visible {
   outline: none !important;
   box-shadow: none !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px var(--your-bg-color) inset;
+  -webkit-text-fill-color: var(--your-text-color);
+  transition: background-color 9999s ease-in-out 0s;
 }

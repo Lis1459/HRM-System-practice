@@ -38,3 +38,16 @@ withDefaults(
   height: 15px;
 }
 </style>
+
+<style>
+.p-floatlabel:has(input.p-invalid) label {
+  color: var(--p-floatlabel-invalid-color);
+}
+
+.p-floatlabel:has(input:-webkit-autofill) label {
+  color: var(--p-floatlabel-active-color);
+}
+.p-floatlabel:has(input:focus) label {
+  color: var(--p-floatlabel-focus-color);
+}
+</style>

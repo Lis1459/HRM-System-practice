@@ -54,6 +54,7 @@ const primeVariant = computed(() => {
     color 0.2s ease,
     box-shadow 0.2s ease,
     filter 0.2s ease;
+  font-size: 14px;
 }
 
 .app-button--submit {
