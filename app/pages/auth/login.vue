@@ -14,15 +14,13 @@ const resolver = zodResolver(schema);
 const router = useRouter();
 const authStore = useAuthStore();
 
-type LoginFormValues = z.infer<typeof schema>;
-
 const onSubmit = async (event: FormSubmitEvent) => {
   if (!event.valid) return;
 
   try {
-    const values: LoginFormValues = schema.parse(event.values);
+    const { email, password } = event.values;
 
-    await authStore.Login(values.email, values.password);
+    await authStore.Login(email, password);
 
     await router.push("/users");
   } catch (error) {
