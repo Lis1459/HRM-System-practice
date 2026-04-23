@@ -2,11 +2,20 @@
 const route = useRoute();
 const router = useRouter();
 
-const activeTab = computed(() => route.path);
-const items = [
+type AuthTab = {
+  route: string;
+  label: string;
+};
+
+const activeTab = computed<string>(() => route.path);
+const items: AuthTab[] = [
   { route: "/auth/login", label: "LOG IN" },
   { route: "/auth/signup", label: "SIGN UP" },
 ];
+
+const navigateToTab = async (tabRoute: AuthTab["route"]) => {
+  await router.push(tabRoute);
+};
 </script>
 
 <template>
@@ -17,7 +26,7 @@ const items = [
           v-for="tab in items"
           :key="tab.label"
           :value="tab.route"
-          @click.prevent="() => router.push(`${tab.route}`)"
+          @click.prevent="navigateToTab(tab.route)"
         >
           {{ tab.label }}
         </Tab>
