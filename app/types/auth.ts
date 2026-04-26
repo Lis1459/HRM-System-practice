@@ -40,3 +40,8 @@ export type AuthSession = {
   accessToken: string | null;
   refreshToken: string | null;
 };
+
+export enum UserRole {
+  "Employee",
+  "Admin",
+}
