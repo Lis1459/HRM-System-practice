@@ -51,3 +51,42 @@ export const RESET_PASSWORD = gql`
     resetPassword(auth: $auth)
   }
 `;
+
+export const UPDATE_TOKEN = gql`
+  mutation UpdateToken {
+    updateToken {
+      access_token
+      refresh_token
+    }
+  }
+`;
+
+export const ME = gql`
+  query User($userId: ID!) {
+    user(userId: $userId) {
+      id
+      email
+      profile {
+        id
+        full_name
+        avatar
+      }
+      role
+      is_verified
+    }
+  }
+`;
+
+///
+
+export const PROFILE = gql`
+  query Profile($userId: ID!) {
+    profile(userId: $userId) {
+      id
+      first_name
+      last_name
+      full_name
+      avatar
+    }
+  }
+`;
