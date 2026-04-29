@@ -1,6 +1,7 @@
 <template>
   <div v-if="mounted">
     <NuxtLayout>
+      <Toast />
       <NuxtPage />
     </NuxtLayout>
   </div>
