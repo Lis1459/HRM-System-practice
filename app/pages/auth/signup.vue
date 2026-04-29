@@ -16,6 +16,7 @@ const schema = z.object({
 const resolver = zodResolver(schema);
 const router = useRouter();
 const authStore = useAuthStore();
+const { successToast, errorToast } = useAppToast();
 
 const onSubmit = async (event: FormSubmitEvent) => {
   if (!event.valid) return;
@@ -24,10 +25,11 @@ const onSubmit = async (event: FormSubmitEvent) => {
     const { email, password } = event.values;
 
     await authStore.SignUp(email, password);
-
+    successToast("Register successfully");
     await router.push("/users");
   } catch (error) {
     if (error instanceof Error) {
+      errorToast(error.message);
       console.log(error);
     }
   }
