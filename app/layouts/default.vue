@@ -16,4 +16,10 @@
   display: grid;
   grid-template-columns: auto 1fr;
 }
+
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
 </style>

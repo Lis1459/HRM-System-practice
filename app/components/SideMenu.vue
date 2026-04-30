@@ -14,9 +14,18 @@ const router = useRouter();
 const authStore = useAuthStore();
 const { successToast } = useAppToast();
 const isCollapsed = ref(false);
+const isMobileMenuOpen = ref(false);
 
 const toggleSidebar = () => {
   isCollapsed.value = !isCollapsed.value;
+};
+
+const toggleMobileMenu = () => {
+  isMobileMenuOpen.value = !isMobileMenuOpen.value;
+};
+
+const closeMobileMenu = () => {
+  isMobileMenuOpen.value = false;
 };
 
 const currentUser = computed(() => authStore.user);
@@ -73,7 +82,23 @@ const isActive = (routePath: string) => route.path === routePath;
 </script>
 
 <template>
-  <aside :class="['sidebar', { collapsed: isCollapsed }]">
+  <!-- Mobile menu button -->
+  <div class="mobile-menu-wrapper">
+    <Button
+      class="mobile-menu-button"
+      icon="pi pi-bars"
+      aria-label="Toggle menu"
+      @click="toggleMobileMenu"
+    />
+  </div>
+
+  <!-- Sidebar -->
+  <aside
+    :class="[
+      'sidebar',
+      { collapsed: isCollapsed, 'mobile-open': isMobileMenuOpen },
+    ]"
+  >
     <nav class="sidebar__nav">
       <NuxtLink
         v-for="item in navItems"
@@ -81,6 +106,7 @@ const isActive = (routePath: string) => route.path === routePath;
         :to="item.route"
         class="sidebar__link"
         :class="{ 'sidebar__link--active': isActive(item.route) }"
+        @click="closeMobileMenu"
       >
         <component :is="componentMap[item.icon]" class="sidebar__icon" />
         <span>{{ item.label }}</span>
@@ -119,7 +145,13 @@ const isActive = (routePath: string) => route.path === routePath;
   </aside>
 </template>
 
-<style sciped>
+<style scoped>
+.mobile-menu-wrapper {
+  position: fixed;
+  z-index: 1000;
+}
+
+/* Sidebar */
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -131,7 +163,6 @@ const isActive = (routePath: string) => route.path === routePath;
 }
 .collapsed {
   width: 56px;
-  /* justify-content: center; */
 }
 
 .sidebar__nav {
@@ -185,8 +216,11 @@ const isActive = (routePath: string) => route.path === routePath;
     background-color 0.2s ease,
     transform 0.15s ease;
 }
-.collapse-button {
+
+.collapse-button,
+.mobile-menu-button {
   padding: 8px;
+  height: fit-content;
   width: fit-content;
   margin-top: 14px;
   margin-left: 8px;
@@ -199,6 +233,81 @@ const isActive = (routePath: string) => route.path === routePath;
     transform 0.15s ease;
 }
 
+.mobile-menu-button {
+  display: none;
+  position: fixed;
+  z-index: 1001;
+  width: 40px;
+  height: 40px;
+  margin-top: 2px;
+  margin-left: 10px;
+  background-color: var();
+}
+
+.mobile-menu-button span {
+  justify-content: center;
+  align-items: center;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .mobile-menu-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 280px;
+    z-index: 999;
+    background-color: var(--p-surface-0);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  .sidebar__link {
+    padding: 12px 20px;
+    height: auto;
+    min-height: 48px;
+  }
+
+  .profile-button {
+    padding: 12px 20px;
+    height: auto;
+    min-height: 48px;
+  }
+
+  .collapse-button {
+    display: none;
+  }
+
+  .collapsed {
+    width: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 100vw;
+  }
+
+  .sidebar__link {
+    font-size: 16px;
+  }
+
+  .profile-button__name {
+    font-size: 14px;
+  }
+}
+
 .collapse-button__icon {
   width: 24px;
   height: 24px;
@@ -206,8 +315,12 @@ const isActive = (routePath: string) => route.path === routePath;
   transition: transform 200ms;
 }
 
-:is(.profile-button, .collapse-button):not(:disabled):hover,
-:is(.profile-button, .collapse-button):not(:disabled):active {
+:is(.profile-button, .collapse-button, .mobile-menu-button):not(
+    :disabled
+  ):hover,
+:is(.profile-button, .collapse-button, .mobile-menu-button):not(
+    :disabled
+  ):active {
   background: rgba(118, 118, 118, 0.04);
   border: none;
   color: var(--p-surface-500);
