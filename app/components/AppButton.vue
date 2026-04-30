@@ -3,17 +3,12 @@ type AppButtonVariant = "submit" | "text" | "outlined";
 
 const props = withDefaults(
   defineProps<{
-    label: string;
     buttonType?: "button" | "submit" | "reset";
     variant?: AppButtonVariant;
-    disabled?: boolean;
-    fluid?: boolean;
   }>(),
   {
     buttonType: "button",
     variant: "submit",
-    disabled: false,
-    fluid: false,
   },
 );
 
@@ -33,10 +28,7 @@ const primeVariant = computed(() => {
 <template>
   <Button
     v-ripple
-    :label="label"
     :type="buttonType"
-    :disabled="disabled"
-    :fluid="fluid"
     :variant="primeVariant"
     class="app-button"
     :class="`app-button--${variant}`"

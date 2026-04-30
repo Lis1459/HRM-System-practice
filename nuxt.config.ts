@@ -40,9 +40,12 @@ export default defineNuxtConfig({
   primevue: {
     components: {
       include: [
+        "Avatar",
+        "Breadcrumb",
         "Button",
         "FloatLabel",
         "InputText",
+        "Menu",
         "Message",
         "Password",
         "Tab",
