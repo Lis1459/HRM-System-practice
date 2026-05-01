@@ -82,7 +82,6 @@ const isActive = (routePath: string) => route.path === routePath;
 </script>
 
 <template>
-  <!-- Mobile menu button -->
   <div class="mobile-menu-wrapper">
     <Button
       class="mobile-menu-button"
@@ -92,7 +91,6 @@ const isActive = (routePath: string) => route.path === routePath;
     />
   </div>
 
-  <!-- Sidebar -->
   <aside
     :class="[
       'sidebar',
@@ -131,15 +129,10 @@ const isActive = (routePath: string) => route.path === routePath;
       </span>
     </Button>
     <Menu id="overlay_menu" ref="menu" :model="profileMenu" :popup="true" />
-    <Button
-      :icon="isCollapsed ? 'pi pi-angle-right' : 'pi pi-angle-left'"
-      type="button"
-      class="collapse-button"
-      @click="toggleSidebar"
-    >
+    <Button type="button" class="collapse-button" @click="toggleSidebar">
       <AngleRightIcon
         class="collapse-button__icon"
-        :style="{ transform: `rotate(${isCollapsed ? 0 : -180}deg)` }"
+        :style="{ transform: `rotate(${!isCollapsed ? 0 : -180}deg)` }"
       />
     </Button>
   </aside>
@@ -313,6 +306,7 @@ const isActive = (routePath: string) => route.path === routePath;
   height: 24px;
   flex-shrink: 0;
   transition: transform 200ms;
+  color: var(--p-surface-54);
 }
 
 :is(.profile-button, .collapse-button, .mobile-menu-button):not(
@@ -321,9 +315,14 @@ const isActive = (routePath: string) => route.path === routePath;
 :is(.profile-button, .collapse-button, .mobile-menu-button):not(
     :disabled
   ):active {
-  background: rgba(118, 118, 118, 0.04);
+  background: rgba(0, 0, 0, 0.04);
   border: none;
   color: var(--p-surface-500);
+}
+
+.profile-button:not(:disabled):hover,
+.profile-button:not(:disabled):active {
+  background: rgba(118, 118, 118, 0.04);
 }
 
 .profile-button__avatar {

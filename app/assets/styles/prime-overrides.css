@@ -10,6 +10,8 @@
   --p-form-field-hover-border-color: var(--p-primary-950);
 
   --p-form-field-float-label-color: var(--p-surface-300);
+
+  --p-surface-54: #0000008a;
 }
 
 html {
