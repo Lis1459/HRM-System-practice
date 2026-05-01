@@ -91,6 +91,7 @@ const onSubmit = async (event: FormSubmitEvent) => {
         <AppButton
           label="FORGOT PASSWORD"
           variant="text"
+          severity="secondary"
           class="form__button"
         />
       </div>

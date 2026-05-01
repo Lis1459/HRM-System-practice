@@ -94,6 +94,7 @@ const onSubmit = async (event: FormSubmitEvent) => {
         <AppButton
           label="I HAVE AN ACCOUNT"
           variant="text"
+          severity="secondary"
           class="form__button"
           @click="
             () => {

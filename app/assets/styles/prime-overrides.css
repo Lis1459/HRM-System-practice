@@ -11,7 +11,10 @@
 
   --p-form-field-float-label-color: var(--p-surface-300);
 
+  --p-button-text-secondary-color: var(--p-text-muted-color);
+
   --p-surface-54: #0000008a;
+  --p-surface-60: #00000099;
 }
 
 html {

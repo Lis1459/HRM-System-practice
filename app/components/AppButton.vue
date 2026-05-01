@@ -1,5 +1,5 @@
 <script setup lang="ts">
-type AppButtonVariant = "submit" | "text" | "outlined";
+type AppButtonVariant = "undefined" | "text" | "outlined";
 
 const props = withDefaults(
   defineProps<{
@@ -8,7 +8,7 @@ const props = withDefaults(
   }>(),
   {
     buttonType: "button",
-    variant: "submit",
+    variant: "undefined",
   },
 );
 
@@ -49,16 +49,16 @@ const primeVariant = computed(() => {
   font-size: 14px;
 }
 
-.app-button--submit {
+.app-button--undefined {
   border-width: 0px;
 }
 
-.app-button--submit:not(:disabled):hover {
+.app-button--undefined:not(:disabled):hover {
   border-width: 0px;
   background: var(--p-button-primary-hover-background);
 }
 
-.app-button--submit:not(:disabled):active {
+.app-button--undefined:not(:disabled):active {
   border-width: 0px;
   box-shadow:
     rgba(0, 0, 0, 0.2) 0px 5px 5px -3px,
@@ -70,16 +70,16 @@ const primeVariant = computed(() => {
 
 .app-button--text {
   padding: 12px 24px;
-  color: var(--p-text-muted-color);
+  /* color: var(--p-text-muted-color); */
 }
 
 .app-button--text:not(:disabled):hover {
-  color: var(--p-text-muted-color);
+  /* color: var(--p-text-muted-color); */
   background: color-mix(in srgb, var(--p-text-muted-color), transparent 96%);
 }
 
 .app-button--text:not(:disabled):active {
-  color: var(--p-text-muted-color);
+  /* color: var(--p-text-muted-color); */
   background: color-mix(in srgb, var(--p-text-muted-color), transparent 96%);
 }
 
