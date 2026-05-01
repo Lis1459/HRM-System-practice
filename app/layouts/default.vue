@@ -16,6 +16,9 @@
   display: grid;
   grid-template-columns: auto 1fr;
 }
+.main-content {
+  min-width: 0;
+}
 
 @media (max-width: 768px) {
   .layout {

@@ -15,6 +15,8 @@
 
   --p-surface-54: #0000008a;
   --p-surface-60: #00000099;
+
+  --p-surface-10: #e0e0e0;
 }
 
 html {
@@ -39,6 +41,10 @@ select {
   font-family: inherit;
   font-size: 14px;
   font-weight: 400;
+}
+
+*::-webkit-scrollbar {
+  height: 6px; /*without it doesn't work scoped styles on scrollbar*/
 }
 
 input {

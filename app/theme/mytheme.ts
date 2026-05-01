@@ -8,8 +8,8 @@ const MyPreset = definePreset(Lara, {
         surface: {
           0: "#F5F5F7", // bg у табов
           50: "#F5F5F7", // bg у табов
-          100: "#F5F5F7", // bg у табов
-          // 200: "#000000",
+          100: "#0000000a", // bg у secondary surface у button
+          200: "##0000000a", // active у secondary button (можно переписать на что-то серое)
           300: "#A7A7A7", // рамка у инпута
           // 400: "#000000",
           500: "#2E2E2E", //
