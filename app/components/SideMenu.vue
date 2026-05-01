@@ -2,12 +2,11 @@
 import { ref, computed } from "vue";
 import { useAuthStore } from "~/stores/auth";
 import { useAppToast } from "~/composables/useAppToast";
-import { Menu } from "primevue";
 import EmployeesIcon from "~/components/icons/EmployeesIcon.vue";
 import SkillsIcon from "~/components/icons/SkillsIcon.vue";
 import LanguagesIcon from "~/components/icons/LanguagesIcon.vue";
 import CvsIcon from "~/components/icons/CvsIcon.vue";
-import AngleRightIcon from "~/components/icons/AngleRightIcon.vue";
+import AngleLeftIcon from "~/components/icons/AngleLeftIcon.vue";
 
 const route = useRoute();
 const router = useRouter();
@@ -30,6 +29,8 @@ const closeMobileMenu = () => {
 
 const currentUser = computed(() => authStore.user);
 
+console.log(currentUser);
+
 const profileMenu = ref([
   {
     label: "Profile",
@@ -51,12 +52,6 @@ const profileMenu = ref([
     },
   },
 ]);
-
-const menu = ref<InstanceType<typeof Menu> | null>(null);
-
-const openProfileMenu = (event: MouseEvent) => {
-  menu.value?.toggle(event);
-};
 
 type NavItem = {
   route: string;
@@ -111,26 +106,19 @@ const isActive = (routePath: string) => route.path === routePath;
       </NuxtLink>
     </nav>
 
-    <Button
-      type="button"
-      class="profile-button"
-      aria-haspopup="true"
-      aria-controls="overlay_menu"
-      @click="openProfileMenu"
-    >
+    <MenuButton :model="profileMenu" button-class="profile-button">
       <Avatar
         shape="circle"
-        image="https://i.pravatar.cc/150?img=5"
+        :image="currentUser?.profile.avatar"
         class="profile-button__avatar"
       />
 
       <span class="profile-button__name">
         {{ currentUser?.profile.full_name || "User Name" }}
       </span>
-    </Button>
-    <Menu id="overlay_menu" ref="menu" :model="profileMenu" :popup="true" />
+    </MenuButton>
     <Button type="button" class="collapse-button" @click="toggleSidebar">
-      <AngleRightIcon
+      <AngleLeftIcon
         class="collapse-button__icon"
         :style="{ transform: `rotate(${!isCollapsed ? 0 : -180}deg)` }"
       />
@@ -192,7 +180,7 @@ const isActive = (routePath: string) => route.path === routePath;
   flex-shrink: 0;
 }
 
-.profile-button {
+:deep(.profile-button) {
   width: 100%;
   display: flex;
   height: 56px;
@@ -272,7 +260,7 @@ const isActive = (routePath: string) => route.path === routePath;
     min-height: 48px;
   }
 
-  .profile-button {
+  :deep(.profile-button) {
     padding: 12px 20px;
     height: auto;
     min-height: 48px;
@@ -291,14 +279,6 @@ const isActive = (routePath: string) => route.path === routePath;
   .sidebar {
     width: 100vw;
   }
-
-  .sidebar__link {
-    font-size: 16px;
-  }
-
-  .profile-button__name {
-    font-size: 14px;
-  }
 }
 
 .collapse-button__icon {
@@ -309,20 +289,11 @@ const isActive = (routePath: string) => route.path === routePath;
   color: var(--p-surface-54);
 }
 
-:is(.profile-button, .collapse-button, .mobile-menu-button):not(
-    :disabled
-  ):hover,
-:is(.profile-button, .collapse-button, .mobile-menu-button):not(
-    :disabled
-  ):active {
+:is(.collapse-button, .mobile-menu-button):not(:disabled):hover,
+:is(.collapse-button, .mobile-menu-button):not(:disabled):active {
   background: rgba(0, 0, 0, 0.04);
   border: none;
   color: var(--p-surface-500);
-}
-
-.profile-button:not(:disabled):hover,
-.profile-button:not(:disabled):active {
-  background: rgba(118, 118, 118, 0.04);
 }
 
 .profile-button__avatar {
