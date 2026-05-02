@@ -1,11 +1,11 @@
 import { defineStore } from "pinia";
 import { LOGIN, ME, SIGNUP } from "~/graphql/auth";
+import type { User } from "~/types/auth";
 import type {
   AuthMutation,
   AuthQuery,
   AuthVariables,
-  User,
-} from "~/types/auth";
+} from "~/graphql/auth/types";
 import {
   clearPersistedAuthTokens,
   createAuthSession,

@@ -56,11 +56,13 @@ export const CREATE_USER = gql`
   mutation CreateUser($user: CreateUserInput!) {
     createUser(user: $user) {
       id
+      email
       profile {
         id
         first_name
         last_name
         full_name
+        avatar
       }
       department {
         id
@@ -70,6 +72,7 @@ export const CREATE_USER = gql`
         id
         name
       }
+      role
     }
   }
 `;
@@ -86,6 +89,7 @@ export const UPDATE_USER = gql`
         id
         name
       }
+      role
     }
   }
 `;

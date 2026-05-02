@@ -12,29 +12,6 @@ export type User = {
   is_verified: boolean;
 };
 
-export type AuthResponse = {
-  user: User;
-  access_token: string;
-  refresh_token: string;
-};
-
-export type AuthQuery = {
-  login: AuthResponse;
-};
-
-export type AuthMutation = {
-  signup: AuthResponse;
-};
-
-export type AuthInput = {
-  email: string;
-  password: string;
-};
-
-export type AuthVariables = {
-  auth: AuthInput;
-};
-
 export type AuthSession = {
   user: User | null;
   accessToken: string | null;
@@ -42,6 +19,6 @@ export type AuthSession = {
 };
 
 export enum UserRole {
-  "Employee",
-  "Admin",
+  Employee = "Employee",
+  Admin = "Admin",
 }
