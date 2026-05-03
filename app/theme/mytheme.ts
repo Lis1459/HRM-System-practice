@@ -108,6 +108,7 @@ const MyPreset = definePreset(Lara, {
         borderRadius: "20px",
       },
       root: {
+        focusColor: "var(--p-primary-500)",
         fontWeight: "400",
       },
     },
