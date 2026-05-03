@@ -124,11 +124,18 @@ const getActionsMenu = (user: UserTableRow) => {
   });
 
   if (isAdmin.value && !isOwnProfile) {
-    menu.push({
-      label: "Delete",
-      icon: "pi pi-delete-left",
-      command: () => handleDelete(user),
-    });
+    menu.push(
+      {
+        label: "Delete",
+        icon: "pi pi-delete-left",
+        command: () => handleDelete(user),
+      },
+      {
+        label: "Watch",
+        icon: "pi pi-angle-right",
+        command: () => handleProfileClick(user),
+      },
+    );
   }
 
   return menu;
