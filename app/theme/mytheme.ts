@@ -135,12 +135,9 @@ const MyPreset = definePreset(Lara, {
         },
       },
     },
-    progressspinner: {
-      root: {
-        colorOne: "#000",
-        // colorOne: "var(--p-rimary-500)",
-        // colorOne: "var(--p-rimary-500)",
-        // colorOne: "var(--p-rimary-500)",
+    breadcrumb: {
+      separator: {
+        color: "var(--p-surface-60)",
       },
     },
   },

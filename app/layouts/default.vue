@@ -11,6 +11,9 @@ const userIdParam = computed(() =>
   String(route.params.userId || route.params.id || ""),
 );
 
+const pathArray = computed(() => route.path.split("/").slice(1));
+console.log(pathArray.value);
+
 const currentUser = ref<UserQuery["user"] | null>(null);
 const loadingUser = ref(false);
 
@@ -25,7 +28,6 @@ const profileBreadcrumbItem = computed(() => {
   return {
     label: label || "Profile",
     profile: true,
-    disabled: true,
   };
 });
 
@@ -36,14 +38,33 @@ const breadcrumbItems = computed(() => {
     profile?: boolean;
     disabled?: boolean;
   }> = [];
-  if (route.path.startsWith("/users")) {
-    items.push({ label: "Employees", to: "/users" });
-    if (profileBreadcrumbItem.value) {
-      items.push({ ...profileBreadcrumbItem.value, disabled: true });
+  let destinationPath = "";
+  pathArray.value.forEach((item) => {
+    destinationPath += `/${item}`;
+    if (item === "users") {
+      items.push({ label: "Employees", to: destinationPath });
+    } else if (!isNaN(Number(item))) {
+      if (profileBreadcrumbItem.value) {
+        items.push({
+          ...profileBreadcrumbItem.value,
+          to: destinationPath,
+        });
+      }
+    } else {
+      items.push({
+        label: item[0]?.toUpperCase() + item.slice(1),
+        to: destinationPath,
+      });
     }
-  }
 
-  return items;
+    console.log(items);
+  });
+
+  return items.map((item, index) => ({
+    ...item,
+    disabled: index === items.length - 1,
+    to: index === items.length - 1 ? undefined : item.to,
+  }));
 });
 
 const fetchUser = async (userId: string) => {
@@ -87,11 +108,13 @@ watch(
             <template v-if="item.profile">
               <span class="layout-breadcrumb__profile">
                 <i class="pi pi-user layout-breadcrumb__icon" />
-                <span class="layout-breadcrumb__label">{{ item.label }}</span>
+                <nuxt-link class="layout-breadcrumb__label" :to="item.to">{{
+                  item.label
+                }}</nuxt-link>
               </span>
             </template>
             <template v-else-if="item.to && !item.disabled">
-              <router-link :to="item.to">{{ item.label }}</router-link>
+              <nuxt-link :to="item.to">{{ item.label }}</nuxt-link>
             </template>
             <template v-else>
               <span>{{ item.label }}</span>
@@ -124,7 +147,6 @@ watch(
   padding: 0;
   padding-left: 20px;
   margin: 0;
-  /* margin: 0 20px; */
 }
 
 .layout-breadcrumb__profile {
