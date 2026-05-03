@@ -9,7 +9,7 @@ const MyPreset = definePreset(Lara, {
           0: "#F5F5F7", // bg у табов
           50: "#F5F5F7", // bg у табов
           100: "#0000000a", // bg у secondary surface у button
-          200: "##0000000a", // active у secondary button (можно переписать на что-то серое)
+          200: "#0000000a", // active у secondary button (можно переписать на что-то серое)
           300: "#A7A7A7", // рамка у инпута
           // 400: "#000000",
           500: "#2E2E2E", //
@@ -92,6 +92,16 @@ const MyPreset = definePreset(Lara, {
           fontWeight: "500",
         },
       },
+      outlined: {
+        secondary: {
+          hoverBackground: "var(--p-text-muted-color)",
+        },
+      },
+    },
+    inputtext: {
+      root: {
+        borderRadius: "0px",
+      },
     },
     floatlabel: {
       on: {
@@ -113,6 +123,23 @@ const MyPreset = definePreset(Lara, {
       text: {
         fontSize: "12px",
         fontWeight: "400",
+      },
+    },
+    select: {
+      root: {
+        disabledBackground: "var(--p-surface-100)",
+        borderRadius: "0px",
+        focusRing: {
+          shadow: "none",
+        },
+      },
+    },
+    progressspinner: {
+      root: {
+        colorOne: "#000",
+        // colorOne: "var(--p-rimary-500)",
+        // colorOne: "var(--p-rimary-500)",
+        // colorOne: "var(--p-rimary-500)",
       },
     },
   },

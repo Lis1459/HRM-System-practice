@@ -8,7 +8,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "typecheck": "npx nuxt typecheck"
+    "typecheck": "npx nuxt typecheck",
+    "lint": "npx eslint ."
   },
   "dependencies": {
     "@apollo/client": "^4.1.7",

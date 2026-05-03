@@ -53,3 +53,10 @@ export type UpdateUserMutation = {
 export type UpdateProfileMutation = {
   updateProfile: UpdateProfileInput;
 };
+
+export type UserQuery = {
+  user: UserListItem & {
+    created_at: string;
+    is_verified: boolean;
+  };
+};

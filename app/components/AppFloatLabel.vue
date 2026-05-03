@@ -24,7 +24,11 @@ withDefaults(
 }
 
 .app-float-label :deep(.p-inputtext) {
-  border-radius: 0px;
+  padding: 12px 0px 12px 12px;
+}
+
+.app-float-label :deep(.p-select-label) {
+  line-height: 23px;
   padding: 12px 0px 12px 12px;
 }
 

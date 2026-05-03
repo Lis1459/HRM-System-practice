@@ -7,6 +7,7 @@ export default defineNuxtConfig({
   css: ["@/assets/styles/prime-overrides.css"],
   routeRules: {
     "/auth/**": { appLayout: "auth" },
+    "/api/**": { proxy: "http://localhost:3001/api/**" },
   },
 
   pinia: {
@@ -43,6 +44,9 @@ export default defineNuxtConfig({
         "Avatar",
         "Breadcrumb",
         "Button",
+        "ConfirmDialog",
+        "Dialog",
+        "Select",
         "FloatLabel",
         "InputText",
         "Menu",
