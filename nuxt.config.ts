@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   css: ["@/assets/styles/prime-overrides.css"],
   routeRules: {
     "/auth/**": { appLayout: "auth" },
-    "/api/**": { proxy: "http://localhost:3001/api/**" },
+    "/api/**": { proxy: `${process.env.NUXT_API_PROXY_TARGET}/api/**` },
   },
 
   pinia: {
