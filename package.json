@@ -9,7 +9,10 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "typecheck": "npx nuxt typecheck",
-    "lint": "npx eslint ."
+    "lint": "npx eslint .",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage"
   },
   "dependencies": {
     "@apollo/client": "^4.1.7",
@@ -29,7 +32,12 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@nuxt/test-utils": "^4.0.3",
+    "@vue/test-utils": "^2.4.1",
+    "@vitest/coverage-v8": "^4.1.5",
+    "jsdom": "^29.0.0",
     "typescript": "^6.0.2",
+    "vitest": "^4.1.5",
     "vue-tsc": "^3.2.6"
   }
 }
