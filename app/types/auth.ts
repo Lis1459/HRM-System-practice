@@ -8,7 +8,7 @@ export type User = {
   id: string;
   email: string;
   profile: UserProfile;
-  role: string;
+  role: UserRole;
   is_verified: boolean;
 };
 

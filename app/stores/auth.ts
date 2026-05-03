@@ -20,6 +20,7 @@ import {
   createAuthVariables,
   persistAuthTokens,
 } from "~/utils/auth";
+import { ref, computed } from "vue";
 
 export const useAuthStore = defineStore("auth", () => {
   const user = ref<null | User>(null);

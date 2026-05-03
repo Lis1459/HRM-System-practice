@@ -1,4 +1,5 @@
-import type { AuthInput, AuthResponse, AuthSession } from "~/types/auth";
+import type { AuthSession } from "~/types/auth";
+import type { AuthInput, AuthResponse } from "~/graphql/auth/types";
 
 const ACCESS_TOKEN_KEY = "access_token";
 const REFRESH_TOKEN_KEY = "refresh_token";
@@ -35,10 +36,6 @@ export function persistAuthTokens(session: AuthSession): void {
 }
 
 export function clearPersistedAuthTokens(): void {
-  if (import.meta.server) {
-    return;
-  }
-
   localStorage.removeItem(ACCESS_TOKEN_KEY);
   localStorage.removeItem(REFRESH_TOKEN_KEY);
 }

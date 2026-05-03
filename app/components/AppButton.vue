@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from "vue";
 type AppButtonVariant = "undefined" | "text" | "outlined";
 
 const props = withDefaults(

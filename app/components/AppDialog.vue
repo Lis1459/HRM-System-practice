@@ -48,6 +48,7 @@ const handleHide = () => {
 
     <template #footer>
       <AppButton
+        data-testid="cancel-button"
         class="dialog-button"
         severity="secondary"
         :label="cancelLabel"
@@ -55,6 +56,7 @@ const handleHide = () => {
         @click="handleCancel"
       />
       <AppButton
+        data-testid="confirm-button"
         class="dialog-button"
         :label="confirmLabel"
         :loading="loading"

@@ -11,6 +11,7 @@ import type {
   UpdateUserMutation,
   UpdateProfileMutation,
 } from "~/graphql/users/types";
+import { ref } from "vue";
 
 export const useUsersStore = defineStore("users", () => {
   const users = ref<UserListItem[]>([]);
