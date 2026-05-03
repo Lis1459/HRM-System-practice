@@ -32,7 +32,9 @@ const primeVariant = computed(() => {
     :variant="primeVariant"
     class="app-button"
     :class="`app-button--${variant}`"
-  />
+  >
+    <slot />
+  </Button>
 </template>
 
 <style scoped>
