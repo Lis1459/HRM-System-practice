@@ -1,10 +1,18 @@
 import { defineStore } from "pinia";
-import { LOGIN, ME, SIGNUP } from "~/graphql/auth";
+import {
+  FORGOT_PASSWORD,
+  LOGIN,
+  ME,
+  RESET_PASSWORD,
+  SIGNUP,
+} from "~/graphql/auth";
 import type { User } from "~/types/auth";
 import type {
   AuthMutation,
   AuthQuery,
   AuthVariables,
+  ForgotPassportInput,
+  ResetPasswordInput,
 } from "~/graphql/auth/types";
 import {
   clearPersistedAuthTokens,
@@ -111,6 +119,36 @@ export const useAuthStore = defineStore("auth", () => {
     }
   }
 
+  async function forgotPassword(email: ForgotPassportInput) {
+    const { data } = await $apollo.mutate({
+      mutation: FORGOT_PASSWORD,
+      variables: {
+        auth: {
+          email,
+        },
+      },
+    });
+
+    if (!data) {
+      throw new Error("Something went wrong");
+    }
+  }
+
+  async function resetPassword(newPassword: ResetPasswordInput) {
+    const { data } = await $apollo.mutate({
+      mutation: RESET_PASSWORD,
+      variables: {
+        auth: {
+          newPassword,
+        },
+      },
+    });
+
+    if (!data) {
+      throw new Error("Something went wrong");
+    }
+  }
+
   return {
     user,
     refreshToken,
@@ -121,5 +159,7 @@ export const useAuthStore = defineStore("auth", () => {
     Logout,
     setTokens,
     initAuth,
+    forgotPassword,
+    resetPassword,
   };
 });

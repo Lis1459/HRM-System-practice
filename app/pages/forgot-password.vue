@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { Form, type FormSubmitEvent } from "@primevue/forms";
-import { useAuthStore } from "~/stores/auth";
 
 import { z } from "zod";
 import { zodResolver } from "@primevue/forms/resolvers/zod";
+import { useAuthStore } from "~/stores/auth";
 
+definePageMeta({
+  layout: "plain",
+});
 const schema = z.object({
   email: z.string("Required field").email("Incorrect email"),
-  password: z.string("Required field").min(6, "Minimum 6 symbols"),
 });
 
 const resolver = zodResolver(schema);
@@ -19,11 +21,11 @@ const onSubmit = async (event: FormSubmitEvent) => {
   if (!event.valid) return;
 
   try {
-    const { email, password } = event.values;
+    const { email } = event.values;
 
-    await authStore.Login(email, password);
-    successToast("Successfully loged in!");
-    await router.push("/users");
+    await authStore.forgotPassword(email);
+    successToast("Check your email inbox");
+    await router.push("/auth/login");
   } catch (error) {
     if (error instanceof Error) {
       errorToast(error.message);
@@ -32,10 +34,13 @@ const onSubmit = async (event: FormSubmitEvent) => {
   }
 };
 </script>
+
 <template>
-  <div class="login">
-    <h1 class="login__title">Welcome back</h1>
-    <p class="login__subtitle">Hello again! Log in to continue</p>
+  <div class="forgot-password">
+    <h1 class="forgot-password__title">Forgot password</h1>
+    <p class="forgot-password__subtitle">
+      We will send you an email with further instructions
+    </p>
     <Form
       v-slot="$form"
       class="form"
@@ -49,12 +54,7 @@ const onSubmit = async (event: FormSubmitEvent) => {
       <div class="form__email-input">
         <AppFloatLabel label="Email" input-id="email">
           <template #default="{ inputId }">
-            <InputText
-              :id="inputId"
-              fluid
-              name="email"
-              autocomplete="username"
-            />
+            <InputText :id="inputId" fluid name="email" autocomplete="email" />
           </template>
         </AppFloatLabel>
         <Message
@@ -65,43 +65,26 @@ const onSubmit = async (event: FormSubmitEvent) => {
           >{{ $form.email.error.message }}</Message
         >
       </div>
-      <div class="form__password-input">
-        <AppFloatLabel label="Password" input-id="password">
-          <template #default="{ inputId }">
-            <Password
-              :id="inputId"
-              toggle-mask
-              name="password"
-              :feedback="false"
-              fluid
-              autocomplete="current-password"
-            />
-          </template>
-        </AppFloatLabel>
-        <Message
-          v-if="$form.password?.invalid"
-          severity="error"
-          variant="simple"
-          class="input-message"
-          >{{ $form.password.error.message }}</Message
-        >
-      </div>
+
       <div class="form__button-set">
-        <AppButton label="LOG IN" class="form__button" button-type="submit" />
         <AppButton
-          label="FORGOT PASSWORD"
+          label="RESET PASSWORD"
+          class="form__button"
+          button-type="submit"
+        />
+        <AppButton
+          label="CANCEL"
           variant="text"
           severity="secondary"
           class="form__button"
-          @click="() => router.push('/forgot-password')"
+          @click="() => router.back()"
         />
       </div>
     </Form>
   </div>
 </template>
-
 <style scoped>
-.login {
+.forgot-password {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -111,7 +94,7 @@ const onSubmit = async (event: FormSubmitEvent) => {
   height: 100%;
 }
 
-.login__title {
+.forgot-password__title {
   font-weight: 400;
   font-size: 34px;
   margin: 0px;
@@ -119,7 +102,7 @@ const onSubmit = async (event: FormSubmitEvent) => {
   margin-bottom: 24px;
 }
 
-.login__subtitle {
+.forgot-password__subtitle {
   font-size: 16px;
   margin: 0px;
   margin-bottom: 40px;
@@ -132,10 +115,6 @@ const onSubmit = async (event: FormSubmitEvent) => {
 }
 
 .form__email-input {
-  margin-bottom: 20px;
-}
-
-.form__password-input {
   margin-bottom: 60px;
 }
 

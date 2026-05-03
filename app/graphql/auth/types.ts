@@ -22,3 +22,11 @@ export type AuthInput = {
 export type AuthVariables = {
   auth: AuthInput;
 };
+
+export type ResetPasswordInput = {
+  newPassword: string;
+};
+
+export type ForgotPassportInput = {
+  email: string;
+};
