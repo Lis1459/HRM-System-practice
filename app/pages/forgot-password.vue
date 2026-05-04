@@ -29,7 +29,6 @@ const onSubmit = async (event: FormSubmitEvent) => {
   } catch (error) {
     if (error instanceof Error) {
       errorToast(error.message);
-      console.log(error);
     }
   }
 };
