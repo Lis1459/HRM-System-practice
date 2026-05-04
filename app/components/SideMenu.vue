@@ -29,13 +29,11 @@ const closeMobileMenu = () => {
 
 const currentUser = computed(() => authStore.user);
 
-console.log(currentUser);
-
 const profileMenu = ref([
   {
     label: "Profile",
     icon: "pi pi-user",
-    command: () => successToast("Open profile"),
+    command: () => router.push(`/users/${currentUser.value?.id}`),
   },
   {
     label: "Settings",
