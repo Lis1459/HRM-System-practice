@@ -172,8 +172,6 @@ const filteredUsers = computed(() => {
   });
 });
 
-console.log("Users: ", users.value);
-
 const toggleSort = (key: typeof sortKey.value) => {
   if (sortKey.value === key) {
     sortOrder.value = sortOrder.value === "asc" ? "desc" : "asc";
@@ -184,7 +182,6 @@ const toggleSort = (key: typeof sortKey.value) => {
 };
 
 const handleCreate = () => {
-  console.log("UserRole", UserRole.Employee);
   createForm.value = {
     email: "",
     password: "",
@@ -236,7 +233,6 @@ const handleProfileClick = (user: UserTableRow) => {
 };
 
 const createUser = async () => {
-  console.log("CreateForm: ", createForm);
   try {
     await usersStore.createUser({
       auth: {
@@ -276,7 +272,6 @@ const updateUser = async () => {
       first_name: editForm.value.firstName,
       last_name: editForm.value.lastName,
     };
-    console.log("userPayload: ", userPayload);
 
     await usersStore.updateUser(userPayload, profilePayload);
     successToast("User updated successfully");
