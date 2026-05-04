@@ -12,7 +12,6 @@ const userIdParam = computed(() =>
 );
 
 const pathArray = computed(() => route.path.split("/").slice(1));
-console.log(pathArray.value);
 
 const currentUser = ref<UserQuery["user"] | null>(null);
 const loadingUser = ref(false);
@@ -56,8 +55,6 @@ const breadcrumbItems = computed(() => {
         to: destinationPath,
       });
     }
-
-    console.log(items);
   });
 
   return items.map((item, index) => ({
