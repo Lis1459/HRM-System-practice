@@ -1,0 +1,90 @@
+@import "@fontsource/roboto/400.css";
+@import "@fontsource/roboto/500.css";
+@import "@fontsource/roboto/700.css";
+@import "primeicons/primeicons.css";
+
+:root {
+  --p-tabs-active-bar-background: var(--p-tabs-tab-active-color);
+  --p-tabs-active-bar-height: 2px;
+
+  --p-form-field-hover-border-color: var(--p-primary-950);
+
+  --p-form-field-float-label-color: var(--p-surface-300);
+
+  --p-button-text-secondary-color: var(--p-text-muted-color);
+
+  --p-navigation-item-icon-color: var(--p-surface-500);
+
+  --p-surface-54: #0000008a;
+  --p-surface-60: #00000099;
+
+  --p-surface-10: #e0e0e0;
+}
+
+html {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+
+  color: var(--p-surface-500);
+}
+
+body {
+  margin: 0px;
+  font-family: inherit;
+  font-size: inherit;
+  background-color: #f5f5f7;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+*::-webkit-scrollbar {
+  height: 6px; /*without it doesn't work scoped styles on scrollbar*/
+}
+
+input {
+  font-size: 16px;
+  line-height: 23px;
+}
+
+.p-tab-active {
+  font-weight: 600;
+}
+
+.p-tablist-nav-button {
+  display: none;
+}
+
+button:focus-visible {
+  filter: brightness(0.9);
+}
+
+button,
+input,
+textarea,
+select,
+a,
+:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px var(--your-bg-color) inset;
+  -webkit-text-fill-color: var(--your-text-color);
+  transition: background-color 9999s ease-in-out 0s;
+}

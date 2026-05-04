@@ -1,0 +1,57 @@
+<script setup lang="ts">
+withDefaults(
+  defineProps<{
+    label: string;
+    inputId: string;
+    variant?: "in" | "on" | "over";
+  }>(),
+  {
+    variant: "on",
+  },
+);
+</script>
+
+<template>
+  <FloatLabel :variant="variant" class="app-float-label">
+    <slot :input-id="inputId" />
+    <label :for="inputId" class="app-float-label__label">{{ label }}</label>
+  </FloatLabel>
+</template>
+
+<style scoped>
+.app-float-label {
+  width: 100%;
+}
+
+.app-float-label :deep(.p-inputtext) {
+  padding: 12px 0px 12px 12px;
+}
+
+.app-float-label :deep(.p-select-label) {
+  line-height: 23px;
+  padding: 12px 0px 12px 12px;
+}
+
+.app-float-label :deep(.p-password),
+.app-float-label :deep(.p-password-input) {
+  width: 100%;
+}
+
+.app-float-label :deep(.p-password-toggle-mask-icon) {
+  width: 22px;
+  height: 15px;
+}
+</style>
+
+<style>
+.p-floatlabel:has(input.p-invalid) label {
+  color: var(--p-floatlabel-invalid-color);
+}
+
+.p-floatlabel:has(input:-webkit-autofill) label {
+  color: var(--p-floatlabel-active-color);
+}
+.p-floatlabel:has(input:focus) label {
+  color: var(--p-floatlabel-focus-color);
+}
+</style>

@@ -1,0 +1,43 @@
+{
+  "name": "HRM-System",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "typecheck": "npx nuxt typecheck",
+    "lint": "npx eslint .",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage"
+  },
+  "dependencies": {
+    "@apollo/client": "^4.1.7",
+    "@fontsource/roboto": "^5.2.10",
+    "@nuxt/eslint": "^1.15.2",
+    "@pinia/nuxt": "^0.11.3",
+    "@primeuix/themes": "^2.0.3",
+    "@primevue/forms": "^4.5.5",
+    "@primevue/nuxt-module": "^4.5.5",
+    "cv-graphql": "^2.13.2",
+    "graphql": "^16.13.2",
+    "nuxt": "^4.4.2",
+    "primeicons": "^7.0.0",
+    "primevue": "^4.5.5",
+    "vue": "^3.5.32",
+    "vue-router": "^5.0.4",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@nuxt/test-utils": "^4.0.3",
+    "@vue/test-utils": "^2.4.1",
+    "@vitest/coverage-v8": "^4.1.5",
+    "jsdom": "^29.0.0",
+    "typescript": "^6.0.2",
+    "vitest": "^4.1.5",
+    "vue-tsc": "^3.2.6"
+  }
+}
